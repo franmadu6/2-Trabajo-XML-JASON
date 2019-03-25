@@ -32,3 +32,27 @@ print("Hay",contar_radares(doc),"radares.")
 #3.  Buscar o filtrar información: Pedir por teclado una provincia y mostrar el nombre de las carreteras que tiene y la cantidad de radares.
 print("\n 3.  Buscar o filtrar información: Pedir por teclado una provincia y mostrar el nombre de las carreteras que tiene y la cantidad de radares.")
 
+def buscarprovincia(doc,radar):
+    carr = doc.xpath('//PROVINCIA[NOMBRE/text() = "%s"]/CARRETERA/DENOMINACION/text()'%radar)
+    return carr
+
+radar=str(input("\n Dime la Provincia: "))
+radar=radar.capitalize()
+print("\n Nombre: ",buscarprovincia(doc,radar))
+
+#4.  Buscar información relacionada: Pedir por teclado una carretera, muestra las provincias por la que pasa y sus respectivos radares.
+print("\n 4.  Buscar información relacionada: Pedir por teclado una carretera, muestra las provincias por la que pasa y sus respectivos radares.")
+
+def buscar_info(doc,denominacion):
+    search = doc.xpath('//CARRETERA[DENOMINACION/text() = "%s"]/nombre/text()'%denominacion)
+    return search
+
+denominacion=int(input("\n Dime una denominación: "))
+print(buscar_info(doc,denominacion))
+
+
+
+
+
+
+
