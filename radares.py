@@ -46,8 +46,9 @@ print(buscar_info(doc,denominacion))
 
 #5.  Ejercicio libre: Pedir por teclado una carretera, cuenta los radares que tiene y muestra las coordenadas de los radares.(Se puede obtener la URL de OpenStraeetMap para ver donde está el radar).
 
-
-
+def coordenadas(doc,carretera):
+	lista=doc.xpath("//CARRETERA/DENOMINACION/text()")
+	indicador=False
 
 
 
