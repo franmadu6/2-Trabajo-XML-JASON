@@ -19,7 +19,16 @@ def nombreradar(doc):
 
 for prov in nombreradar(doc):
     print(prov)
-
     
 #2.  Contar información: Mostrar la cantidad de radares de los que tenemos información.
 print("\n 2.  Contar información: Mostrar la cantidad de radares de los que tenemos información.")
+
+def contar_radares(doc):
+    count = doc.xpath('count(//CARRETERA[DENOMINACION/text()])')
+    return int(count)
+
+print("Hay",contar_radares(doc),"radares.")
+
+#3.  Buscar o filtrar información: Pedir por teclado una provincia y mostrar el nombre de las carreteras que tiene y la cantidad de radares.
+print("\n 3.  Buscar o filtrar información: Pedir por teclado una provincia y mostrar el nombre de las carreteras que tiene y la cantidad de radares.")
+
