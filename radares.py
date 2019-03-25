@@ -49,7 +49,24 @@ print(buscar_info(doc,denominacion))
 def coordenadas(doc,carretera):
 	lista=doc.xpath("//CARRETERA/DENOMINACION/text()")
 	indicador=False
-
+	for carreteras in lista:
+		if carretera.upper()==carreteras.upper():
+			 indicador=True
+	if indicador:
+		print("Carretera detectada.")
+		input("Pulse Enter para continuar.")
+		rad=doc.xpath("count(//CARRETERA[DENOMINACION='%s']/RADAR)"%(carretera.upper()))
+		print("Hay",int(rad),"radares.")
+		LatitudesI=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_INICIAL/LATITUD/text()"%(carretera.upper()))
+		LongitudesI=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_INICIAL/LONGITUD/text()"%(carretera.upper()))
+		LatitudesF=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_FINAL/LATITUD/text()"%(carretera.upper()))
+		LongitudesF=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_FINAL/LONGITUD/text()"%(carretera.upper()))
+		for i in range(0,int(rad)):
+			print("Radar",i,":")
+			print("Latitud Inicial:",LatitudesI[i])
+			print("Longitud Inicial:",LongitudesI[i])
+			print("Latitud Final:",LatitudesF[i])
+			print("Longitud Final:",LongitudesF[i])
 
 
 
