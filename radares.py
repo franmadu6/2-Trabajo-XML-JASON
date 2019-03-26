@@ -12,8 +12,6 @@ def nombreradar(doc):
 
 for prov in nombreradar(doc):
     print(prov)
-    
-input("\nPulse Enter para continuar.")
 
 #2.  Contar información: Mostrar la cantidad de radares de los que tenemos información.
 print("\n 2.  Contar información: Mostrar la cantidad de radares de los que tenemos información.")
@@ -37,8 +35,6 @@ radar=str(input("\n Dime la Provincia: "))
 radar=radar.capitalize()
 print("\n Nombre: ",buscarprovincia(doc,radar))
 
-input("\nPulse Enter para continuar.")
-
 #4.  Buscar información relacionada: Pedir por teclado una carretera, muestra las provincias por la que pasa y sus respectivos radares.
 print("\n 4.  Buscar información relacionada: Pedir por teclado una carretera, muestra las provincias por la que pasa y sus respectivos radares.")
 
@@ -57,13 +53,13 @@ print("\n5.  Ejercicio libre: Pedir por teclado una carretera, cuenta los radare
 
 print("\nListado de radares\n")
 def coordenadas(doc,carretera):
-	lista=doc.xpath("//CARRETERA/DENOMINACION/text()")
+	listarad=doc.xpath("//CARRETERA/DENOMINACION/text()")
 	indicador=False
-	for carreteras in lista:
+	for carreteras in listarad:
 		if carretera.upper()==carreteras.upper():
 			 indicador=True
 	if indicador:
-		print("Carretera detectada.")
+		print("Carretera detectada!!")
 		input("Pulse Enter para continuar.")
 		radares=doc.xpath("count(//CARRETERA[DENOMINACION='%s']/RADAR)"%(carretera.upper()))
 		print("Hay",int(radares),"radares.")
@@ -71,6 +67,7 @@ def coordenadas(doc,carretera):
 		LongitudesI=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_INICIAL/LONGITUD/text()"%(carretera.upper()))
 		LatitudesF=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_FINAL/LATITUD/text()"%(carretera.upper()))
 		LongitudesF=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_FINAL/LONGITUD/text()"%(carretera.upper()))
+        
 		for radar in range(0,int(radares)):
 			print("Radar",radar,":")
 			print("Latitud Inicial:",LatitudesI[radar])
@@ -84,8 +81,8 @@ def coordenadas(doc,carretera):
             print("Esta carretera no esta registrada en la base de datos.")
 
 
-lista=doc.xpath("//CARRETERA/DENOMINACION/text()")
-for carreteras in lista:
+listarad=doc.xpath("//CARRETERA/DENOMINACION/text()")
+for carreteras in listarad:
     print(carreteras)
 carretera=str(input("¿Que carretera buscas? "))
 coordenadas(doc,carretera)
