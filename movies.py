@@ -22,8 +22,8 @@ def contar_info(datos):
         for actor in datos[actor]["actors"]:
             lista_actor.append(actor)
         lista.append(len(lista_actor))
+        
     cad = "--Número de actores en cada pelicula: --\n\n"
-    
     for actor in range(0,len(lista),2):
         cad = cad + str(lista[actor]) + " tiene " + str(lista[actor + 1]) + " actores/actrices. " + "\n\n"
     return cad
