@@ -10,7 +10,7 @@ def listar_info(datos):
         
     info = "\nLista de peliculas: "
     for listapelis in range(0,len(lista),3):
-        info = info + "Title: " + str(lista[listapelis]) + "\nAño: " + str(lista[listapelis + 1]) + "\nDuracion: " + str(lista[listapelis + 2]) + "\n\n"
+        info = info + "Title: " + str(lista[listapelis]) + "\nAño: " + str(lista[listapelis + 1]) + "\nDuracion: " + str(lista[listapelis + 2]).replace("PT","").replace("M"," Min.") + "\n\n"
     return info
 
 with open("movies.json","r") as fichero:
