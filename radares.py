@@ -54,27 +54,27 @@ print("\n5.  Ejercicio libre: Pedir por teclado una carretera, cuenta los radare
 print("\nListado de radares\n")
 def coordenadas(doc,carretera):
 	listarad=doc.xpath("//CARRETERA/DENOMINACION/text()")
-	indicador=False
+	validador=False
 	for carreteras in listarad:
 		if carretera.upper()==carreteras.upper():
-			 indicador=True
-	if indicador:
+			 validador=True
+	if validador:
 		print("Carretera detectada!!")
 		input("Pulse Enter para continuar.")
 		radares=doc.xpath("count(//CARRETERA[DENOMINACION='%s']/RADAR)"%(carretera.upper()))
 		print("Hay",int(radares),"radares.")
-		LatitudesI=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_INICIAL/LATITUD/text()"%(carretera.upper()))
-		LongitudesI=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_INICIAL/LONGITUD/text()"%(carretera.upper()))
-		LatitudesF=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_FINAL/LATITUD/text()"%(carretera.upper()))
-		LongitudesF=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_FINAL/LONGITUD/text()"%(carretera.upper()))
+		Latitud_inicial=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_INICIAL/LATITUD/text()"%(carretera.upper()))
+		Longitud_inicial=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_INICIAL/LONGITUD/text()"%(carretera.upper()))
+		Latitud_final=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_FINAL/LATITUD/text()"%(carretera.upper()))
+		Longitud_final=doc.xpath("//CARRETERA[DENOMINACION='%s']/RADAR/PUNTO_FINAL/LONGITUD/text()"%(carretera.upper()))
         
 		for radar in range(0,int(radares)):
 			print("Radar",radar,":")
-			print("Latitud Inicial:",LatitudesI[radar])
-			print("Longitud Inicial:",LongitudesI[radar])
-			print("Latitud Final:",LatitudesF[radar])
-			print("Longitud Final:",LongitudesF[radar])
-			url='https://www.openstreetmap.org/directions?engine=graphhopper_car&route='+LatitudesI[radar]+'%2C'+LongitudesI[radar]+'%3B'+LatitudesF[radar]+'%2C'+LongitudesF[radar]+'#map=12/39.0407/-1.8079&layers=N'
+			print("Latitud Inicial:",Latitud_inicial[radar])
+			print("Longitud Inicial:",Longitud_inicial[radar])
+			print("Latitud Final:",Latitud_final[radar])
+			print("Longitud Final:",Longitud_final[radar])
+			url='https://www.openstreetmap.org/directions?engine=graphhopper_car&route='+Latitud_inicial[radar]+'%2C'+Longitud_inicial[radar]+'%3B'+Latitud_final[radar]+'%2C'+Longitud_final[radar]+'#map=12/39.0407/-1.8079&layers=N'
 			print(url)
 
 	else:
