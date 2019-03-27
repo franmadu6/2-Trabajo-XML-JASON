@@ -1,4 +1,4 @@
-# 2-Trabajo-XML-JASON
+# 2-Trabajo-XML-JSON
 2 trabajo utilizando xml y json
 
 
